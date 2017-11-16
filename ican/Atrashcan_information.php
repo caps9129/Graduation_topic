@@ -21,7 +21,9 @@ if($id != null)
 	$sql = "INSERT INTO `trashcan_state` (ican_ID, used_time, voltage, current, temperature, latitude, longitude, warning, state) VALUES ('$id' ,'$used_time','$voltage' ,'$current' ,'$temperature' ,'$latitude' ,'$longitude', '$warning', '$state')";
 	mysqli_query($db , $sql);
 
-	$sql = "SELECT current FROM trashcan_state where Car_ID = 'test'";
+	
+
+	$sql = "SELECT current FROM trashcan_state where ican_ID = 'test'";
 	$rows = mysqli_query($db , $sql);
 	$nums = mysqli_num_rows($rows); 
 	if($nums > 0){

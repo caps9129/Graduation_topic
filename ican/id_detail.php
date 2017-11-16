@@ -18,7 +18,7 @@ $nums = mysqli_num_rows($rows);
 	<link rel="icon" 
       type="image/png" 
       href="images/icon.png">
-		<title>智慧垃圾桶</title>
+		<title>智慧行李箱</title>
 		<meta charset="utf-8" />
 		<style>
 	      /* Always set the map height explicitly to define the size of the div

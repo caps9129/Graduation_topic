@@ -1,14 +1,3 @@
-<?php
-$db = mysqli_connect("140.134.26.143", "ican", "cani" , "i_can_db");
-if(!$db){
-    die("無法對資料庫連線");
-}        
-$sql = "SELECT * FROM trashcan_show_state";
-$rows = mysqli_query($db , $sql);
-$nums = mysqli_num_rows($rows);
-
-
-?>
 <!DOCTYPE HTML>
 <html>
 	<html style= "padding-top: 150px ; padding-left: 10% ; padding-right: 10% ; border-right-width: 20px; background-color: black;">
@@ -16,7 +5,7 @@ $nums = mysqli_num_rows($rows);
 	<link rel="icon" 
       type="image/png" 
       href="images/icon.png">
-		<title>智慧垃圾桶</title>
+		<title>智慧行李箱</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -28,6 +17,7 @@ $nums = mysqli_num_rows($rows);
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
         <link href="https://fonts.googleapis.com/css?family=Anton|Permanent+Marker" rel="stylesheet">
+  		
 
     </head>
 
@@ -37,44 +27,13 @@ $nums = mysqli_num_rows($rows);
                 <source src="images/airport.mp4" type="video/mp4">
             </video>
 	    </div>  
-    	<table>
-    		<thead>
-    			<tr>	
-					<th>ID</th>
-					<th>used time</th>
-					<th>battery</th>
-					<th>voltage</th>
-					<th>current</th>
-					<th>temperature</th>
-					<th>latitude</th>
-					<th>longitude</th>
-					<th>warning</th>
-					<th>state</th>
-					<th>last used time</th>
-				</tr>
-			</thead>	
-			<tbody>
-			<?php
-			for($a = 0 ; $a < $nums ; $a++){
-				$row = mysqli_fetch_row($rows);
-				echo "<tr>";
-				echo "<td class = \"id_detail\"> <a href='id_detail.php?id=$row[0]&lon=$row[7]&lat=$row[6]'  target='_blank'>{$row[0]}</a> </td>";
-				echo "<td class = \"id_detail\">" . $row[1] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[2] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[3] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[4] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[5] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[6] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[7] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[8] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[9] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[10] . "</td>";
-				echo "</tr>";	
-			}
-			mysqli_free_result($rows);
-			?>
-			</tbody>	
-    	</table>
+	   
+    	
+		<div id="content">
+			<!--?php include 'Management_Data_Table_Select.php';?-->	
+		</div>	
+    	
+    	
 			
 	    		
         <nav id="nav">
@@ -102,5 +61,14 @@ $nums = mysqli_num_rows($rows);
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script>
+				$(document).ready(function() {
+	  				$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+	  				setInterval(function() {
+	    				$('#content').load('Management_Data_Table_Select.php');
+	  				}, 1000); // the "3000" 
+				});
+			</script>
+			<!--meta http-equiv="refresh" content="3"-->
 </html>
 			
