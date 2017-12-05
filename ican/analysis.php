@@ -18,7 +18,7 @@ if($nums > 0){
 mysqli_free_result($rows);
 
 
-/*$sql =  "SELECT * FROM trashcan_state where ican_ID = 'test'";  
+$sql =  "SELECT * FROM trashcan_state where ican_ID = 'test'";  
 $sth = mysqli_query($db , $sql);
 
         $data = array (
@@ -48,9 +48,9 @@ while ($res = mysqli_fetch_assoc($sth)) {
         array('v' => floatval($res['temperature'])),
     )));   
     // array nesting is complex owing to to google charts api
-}*/
+}
 
-$sql =  "SELECT * FROM  dht WHERE 1";  
+/*$sql =  "SELECT * FROM  dht WHERE 1";  
 $sth = mysqli_query($db , $sql);
 
         $data_dht = array (
@@ -78,7 +78,7 @@ while ($res = mysqli_fetch_assoc($sth)) {
         array('v' => floatval($res['Temperature'])),
     )));   
     // array nesting is complex owing to to google charts api
-}
+}*/
 
 ?>
 <!DOCTYPE HTML>
@@ -99,7 +99,7 @@ while ($res = mysqli_fetch_assoc($sth)) {
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
      <div id="line_top_x"  style="padding-top: 10% ; padding-left: 30%;"></div>
-    <div id="chart_div"  style="padding-top: 5% ; padding-left: 30%;"></div>
+    <div id="chart_div"  style="padding-top: 10% ; padding-left: 30%;"></div>
     <div id="dht_div"  style="padding-top: 5% ; padding-left: 30%;"></div>
     <!--video width="2000" height="400" autoplay style="padding-top: 5%; padding-right: 3%;">
       <source src="DEMO.mp4" type="video/mp4">
@@ -116,7 +116,7 @@ while ($res = mysqli_fetch_assoc($sth)) {
           <source src="images/airport.mp4" type="video/mp4">
       </video>
     </div>  
-    <script type="text/javascript">
+    <!--script type="text/javascript">
       var nums = <?php echo $nums ?>;
       var temp_data = <?php echo json_encode($temp) ?>;
 
@@ -163,11 +163,11 @@ while ($res = mysqli_fetch_assoc($sth)) {
 
       chart.draw(data, google.charts.Line.convertOptions(options));
     }
-      </script>
+      </script-->
     
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-      /*google.charts.load('current', {'packages':['line']});
+      google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
@@ -194,7 +194,7 @@ while ($res = mysqli_fetch_assoc($sth)) {
     }
   </script>
    
-  <script type="text/javascript">
+  <!--script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -220,7 +220,7 @@ while ($res = mysqli_fetch_assoc($sth)) {
 
       chart.draw(data, google.charts.Line.convertOptions(options));
     }
-  </script>      
+  </script-->      
       <nav id="nav">
         <ul>
           <li><a href="index.html" class="scrolly">Home</a></li>  

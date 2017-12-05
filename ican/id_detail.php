@@ -1,7 +1,7 @@
 <?php
 $ID = $_GET['id'];
-$Longitude = $_GET['lon'];
-$Latitude = $_GET['lat'];
+$Longitude = 120.642485;
+$Latitude = 24.179000;
 
 $db = mysqli_connect("140.134.26.143", "ican", "cani" , "i_can_db");
 if(!$db){
@@ -61,12 +61,12 @@ $nums = mysqli_num_rows($rows);
 	        });
 	      
 	        var icons = {
-	          charge: {
-	            icon: 'images/garbage-truck.png'
+	          gas: {
+	            icon: 'images/gas.png'
 	          },
-	          info: {
+	          email: {
 	            /*icon: dot_center + 'red-dot.png'*/
-	            icon: 'images/trash.png'
+	            icon: 'images/email.png'
 	          }
 	        };
 	        var features = [
@@ -75,16 +75,44 @@ $nums = mysqli_num_rows($rows);
 	            type: 'info'
 	          },
 	          {
-	            position: new google.maps.LatLng(24.180547, 120.653836),
-	            type: 'charge'
+	            position: new google.maps.LatLng(24.171188, 120.6311989),
+	            type: 'gas'
 	          }, 
 	          {
-	            position: new google.maps.LatLng(24.181076, 120.631971),
-	            type: 'charge'
+	            position: new google.maps.LatLng(24.1713234, 120.6417413),
+	            type: 'gas'
 	          }, 
 	          {
-	            position: new google.maps.LatLng(24.161451, 120.618195),
-	            type: 'charge'
+	            position: new google.maps.LatLng(24.1635083, 120.6482792),
+	            type: 'gas'
+	          },
+	          {
+	            position: new google.maps.LatLng(24.171223, 120.6293373),
+	            type: 'gas'
+	          }, 
+	          {
+	            position: new google.maps.LatLng(24.166172, 120.6167743),
+	            type: 'gas'
+	          }, 
+	          {
+	            position: new google.maps.LatLng(24.1721424, 120.6432125),
+	            type: 'gas'
+	          },
+	          {
+	            position: new google.maps.LatLng(24.182369, 120.6314393),
+	            type: 'gas'
+	          },
+	          {
+	            position: new google.maps.LatLng(24.201513, 120.6526283),
+	            type: 'gas'
+	          }, 
+	          {
+	            position: new google.maps.LatLng(24.1782459, 120.6183106),
+	            type: 'gas'
+	          }, 
+	          {
+	            position: new google.maps.LatLng(24.1796619, 120.6169046),
+	            type: 'gas'
 	          },
 	        ];
 	        // Create markers.
@@ -107,8 +135,8 @@ $nums = mysqli_num_rows($rows);
 					<th>current</th>
 					<th>temperature</th>
 					<th>battery</th>
-					<th>latitude</th>
-					<th>longitude</th>
+					<!--th>latitude</th>
+					<th>longitude</th-->
 					<th>warning</th>
 					<th>state</th>
 					<th>last used time</th>
@@ -119,14 +147,14 @@ $nums = mysqli_num_rows($rows);
 			for($a = 0 ; $a < $nums ; $a++){
 				$row = mysqli_fetch_row($rows);
 				echo "<tr>";
-				echo "<td class = \"id_detail\"> <a href='id_detail.php?id=$row[0]&lon=$row[7]&lat=$row[6]'  target='_blank'>{$row[0]}</a> </td>";
+				echo "<td class = \"id_detail\"> <a href='id_detail.php?id=$row[0]&lon=120.642485&lat=24.179000'  target='_blank'>{$row[0]}</a> </td>";
 				echo "<td class = \"id_detail\">" . $row[1] . "</td>";
 				echo "<td class = \"id_detail\">" . $row[2] . "</td>";
 				echo "<td class = \"id_detail\">" . $row[3] . "</td>";
 				echo "<td class = \"id_detail\">" . $row[4] . "</td>";
 				echo "<td class = \"id_detail\">" . 0 . "</td>";
-				echo "<td class = \"id_detail\">" . $row[5] . "</td>";
-				echo "<td class = \"id_detail\">" . $row[6] . "</td>";
+				/*echo "<td class = \"id_detail\">" . $row[5] . "</td>";
+				echo "<td class = \"id_detail\">" . $row[6] . "</td>";*/
 				echo "<td class = \"id_detail\">" . $row[7] . "</td>";
 				echo "<td class = \"id_detail\">" . $row[8] . "</td>";
 				echo "<td class = \"id_detail\">" . $row[9] . "</td>";
@@ -208,7 +236,7 @@ $nums = mysqli_num_rows($rows);
 				<li><a href="#footer" class="scrolly"><font color="#C10066">I-can Information</font></a></li>
 				<li><a href="#">Member</a>
 					<ul>
-					<li><a href="user_management.html" class="scrolly">Management</a></li>
+					<li><a href="management.php" class="scrolly">Management</a></li>
 					<li><a href="register.html" class="scrolly">Register</a></li>
 					<li><a href="report.html" class="scrolly">Report</a></li>
 					<li><a href="logout.php" class="scrolly">Logout</a></li>

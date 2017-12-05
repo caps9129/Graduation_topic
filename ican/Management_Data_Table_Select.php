@@ -18,8 +18,6 @@ echo '
 			<th>voltage</th>
 			<th>current</th>
 			<th>temperature</th>
-			<th>latitude</th>
-			<th>longitude</th>
 			<th>warning</th>
 			<th>state</th>
 			<th>last used time</th>
@@ -37,8 +35,6 @@ echo '
 		echo "<td class = \"id_detail\">" . $row[3] . "</td>";
 		echo "<td class = \"id_detail\">" . $row[4] . "</td>";
 		echo "<td class = \"id_detail\">" . $row[5] . "</td>";
-		echo "<td class = \"id_detail\">" . $row[6] . "</td>";
-		echo "<td class = \"id_detail\">" . $row[7] . "</td>";
 		echo "<td class = \"id_detail\">" . $row[8] . "</td>";
 		echo "<td class = \"id_detail\">" . $row[9] . "</td>";
 		echo "<td class = \"id_detail\">" . $row[10] . "</td>";

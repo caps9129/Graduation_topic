@@ -61,10 +61,10 @@ mysqli_free_result($rows);
 		    			<tr>	
 							<th>ID</th>
 							<th>used time</th>
+							<th>battery</th>
 							<th>voltage</th>
 							<th>current</th>
 							<th>temperature</th>
-							<th>battery</th>
 							<th>latitude</th>
 							<th>longitude</th>
 							<th>warning</th>
@@ -83,17 +83,17 @@ mysqli_free_result($rows);
 							for($i = 0 ; $i < $num ; $i++){
 							$row = mysqli_fetch_row($rows);
 							echo "<tr>";
-							echo "<td class = \"id_detail\">" . $row[0] . "</td>";
+							echo "<td class = \"id_detail\"> <a href='id_detail.php?id=$row[0]&lon=$row[7]&lat=$row[6]'  target='_blank'>{$row[0]}</a> </td>";
 							echo "<td class = \"id_detail\">" . $row[1] . "</td>";
 							echo "<td class = \"id_detail\">" . $row[2] . "</td>";
 							echo "<td class = \"id_detail\">" . $row[3] . "</td>";
 							echo "<td class = \"id_detail\">" . $row[4] . "</td>";
-							echo "<td class = \"id_detail\">" . 0 . "</td>";
 							echo "<td class = \"id_detail\">" . $row[5] . "</td>";
 							echo "<td class = \"id_detail\">" . $row[6] . "</td>";
 							echo "<td class = \"id_detail\">" . $row[7] . "</td>";
 							echo "<td class = \"id_detail\">" . $row[8] . "</td>";
 							echo "<td class = \"id_detail\">" . $row[9] . "</td>";
+							echo "<td class = \"id_detail\">" . $row[10] . "</td>";
 							echo "</tr>";
 							if($row[3] < 20){
 								$j = 0;
@@ -144,5 +144,13 @@ mysqli_free_result($rows);
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-			<?php header('refresh: 600;url="show.php"')?>
+			<script>
+				$(document).ready(function() {
+	  				$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+	  				setInterval(function() {
+	    				$('#content').load('Management_Data_Table_Select.php');
+	  				}, 1000); // the "3000" 
+				});
+			</script>
+			<!--?php header('refresh: 600;url="show.php"')?-->
 </html>
